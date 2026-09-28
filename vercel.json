@@ -1,8 +1,9 @@
 {
+  "framework": null,
+  "buildCommand": "node build.js",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/portal", "destination": "/portal.html" },
-    { "source": "/", "destination": "/index.html" }
+    { "source": "/portal", "destination": "/portal.html" }
   ]
 }

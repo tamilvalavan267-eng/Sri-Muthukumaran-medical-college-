@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Management Portal | Sri Muthukumaran Medical College</title>
+  <meta name="description" content="Role-based management portal for students, faculty, parents, and administration of Sri Muthukumaran Medical College & Research Institute.">
+  
+  <!-- Centralized Design System -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/portal.css">
+</head>
+<body>
+
+  <div class="portal-layout">
+
+    <!-- Sidebar Navigation -->
+    <aside class="portal-sidebar" id="portalSidebar">
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <div class="sidebar-emblem">⚕️</div>
+        <div class="sidebar-brand-text">
+          <h2>SMMCRI Portal</h2>
+          <span>Medical Management</span>
+        </div>
+      </div>
+
+      <!-- Active User / Role Card in Sidebar -->
+      <div class="sidebar-role-card">
+        <div class="sidebar-role-info">
+          <div class="sidebar-role-avatar" id="sidebarRoleAvatar">🩺</div>
+          <div class="sidebar-role-meta">
+            <h4 id="sidebarRoleName">Aarav Sundaram</h4>
+            <span id="sidebarRoleBadge">STUDENT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Navigation Menu -->
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Core Overview</div>
+        <a class="sidebar-item active" data-view="dashboard">
+          <span class="sidebar-item-icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+
+        <!-- Academic & Clinical Section -->
+        <div class="nav-section-title">Academic & Clinical</div>
+        <a class="sidebar-item" data-view="attendance">
+          <span class="sidebar-item-icon">📅</span>
+          <span>Attendance</span>
+          <span class="sidebar-badge">NMC</span>
+        </a>
+
+        <a class="sidebar-item" data-view="marks">
+          <span class="sidebar-item-icon">📝</span>
+          <span>Marks & Grades</span>
+        </a>
+
+        <a class="sidebar-item" data-view="exams">
+          <span class="sidebar-item-icon">📑</span>
+          <span>Examinations</span>
+        </a>
+
+        <a class="sidebar-item" data-view="timetable">
+          <span class="sidebar-item-icon">⏰</span>
+          <span>Timetable</span>
+        </a>
+
+        <!-- Student & Campus Life -->
+        <div class="nav-section-title">Campus & Student Life</div>
+        <a class="sidebar-item" data-view="fees">
+          <span class="sidebar-item-icon">💳</span>
+          <span>Fees & Payments</span>
+        </a>
+
+        <a class="sidebar-item" data-view="hostel">
+          <span class="sidebar-item-icon">🏢</span>
+          <span>Hostel & Mess</span>
+        </a>
+
+        <a class="sidebar-item" data-view="announcements">
+          <span class="sidebar-item-icon">📢</span>
+          <span>Announcements</span>
+        </a>
+
+        <!-- Administration Modules (Admin / Teacher visible) -->
+        <div class="nav-section-title role-req-admin role-req-teacher">Institutional Directory</div>
+        <a class="sidebar-item role-req-admin role-req-teacher" data-view="students">
+          <span class="sidebar-item-icon">👨‍🎓</span>
+          <span>Student Registry</span>
+        </a>
+
+        <a class="sidebar-item role-req-admin" data-view="teachers">
+          <span class="sidebar-item-icon">👨‍🏫</span>
+          <span>Faculty Directory</span>
+        </a>
+
+        <a class="sidebar-item role-req-admin" data-view="reports">
+          <span class="sidebar-item-icon">📈</span>
+          <span>Audit & Reports</span>
+        </a>
+
+        <!-- User & System Preferences -->
+        <div class="nav-section-title">Preferences</div>
+        <a class="sidebar-item" data-view="profile">
+          <span class="sidebar-item-icon">👤</span>
+          <span>My Profile</span>
+        </a>
+
+        <a class="sidebar-item" data-view="settings">
+          <span class="sidebar-item-icon">⚙️</span>
+          <span>Theme & Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <a href="index.html" class="btn btn-outline btn-sm w-100" style="color: #cbd5e1; border-color: rgba(255,255,255,0.15);">
+          ← Public Website
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Portal Content Wrapper -->
+    <div class="portal-main">
+
+      <!-- Topbar Navigation -->
+      <header class="portal-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" id="mobileSidebarToggle" aria-label="Toggle navigation drawer">
+            ☰
+          </button>
+          
+          <div class="topbar-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="portalGlobalSearch" placeholder="Search students, subjects, circulars..." aria-label="Search">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- 4-Role Quick Demo Selector in Topbar -->
+          <div class="role-quick-selector" title="Switch User Role Demonstration">
+            <button class="role-btn" data-switch-role="admin">Admin</button>
+            <button class="role-btn" data-switch-role="teacher">Teacher</button>
+            <button class="role-btn active" data-switch-role="student">Student</button>
+            <button class="role-btn" data-switch-role="parent">Parent</button>
+          </div>
+
+          <!-- Notification Bell -->
+          <div style="position: relative;">
+            <button class="notification-bell-btn" id="notificationBellBtn" title="View Notifications" aria-label="Notifications">
+              🔔
+              <span class="notif-badge-dot"></span>
+            </button>
+
+            <!-- Notifications Dropdown -->
+            <div class="notif-dropdown" id="notificationDropdown">
+              <div class="notif-header">
+                <span>Notifications (2 New)</span>
+                <span class="badge badge-primary">Recent</span>
+              </div>
+              <div class="notif-list">
+                <div class="notif-item unread">
+                  <span style="font-size: 1.25rem;">📝</span>
+                  <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-main);">
+                      Internal Assessment marks updated for General Medicine (88/100).
+                    </div>
+                    <div style="font-size: 0.725rem; color: var(--text-muted); margin-top: 2px;">2 hours ago</div>
+                  </div>
+                </div>
+
+                <div class="notif-item unread">
+                  <span style="font-size: 1.25rem;">💳</span>
+                  <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-main);">
+                      Tuition fee due reminder: ₹1,60,000 balance before 15 Oct 2026.
+                    </div>
+                    <div style="font-size: 0.725rem; color: var(--text-muted); margin-top: 2px;">Yesterday</div>
+                  </div>
+                </div>
+
+                <div class="notif-item">
+                  <span style="font-size: 1.25rem;">📚</span>
+                  <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-main);">
+                      Prof. Dr. Meenakshi posted cardiology case notes on Heart Failure.
+                    </div>
+                    <div style="font-size: 0.725rem; color: var(--text-muted); margin-top: 2px;">3 days ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Profile Display -->
+          <div class="topbar-profile" onclick="portalApp.navigateTo('profile')">
+            <div class="topbar-avatar" id="topbarAvatar">🩺</div>
+            <div class="topbar-user-info d-none d-md-block">
+              <h5 id="topbarUserName">Aarav Sundaram</h5>
+              <span id="topbarUserRole">Final Year MBBS</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dynamic Page Content Container -->
+      <main class="portal-content" id="portalContentArea">
+        <!-- Rendered dynamically by js/portal.js -->
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ==========================================
+       SIMULATED FEE PAYMENT CHECKOUT MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3>Online Fee Payment Gateway</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Sri Muthukumaran Medical College Accounts</span>
+        </div>
+        <button class="modal-close-btn" onclick="portalApp.closePaymentModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Outstanding Term Due</div>
+            <div id="modalPendingBalance" style="font-size: 1.35rem; font-weight: 800; color: var(--danger);">₹1,60,000</div>
+          </div>
+          <span class="badge badge-warning">Due: 15 Oct 2026</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Payment Amount (INR)</label>
+          <input type="number" id="modalPayAmountInput" class="form-control" value="160000" min="1000" max="160000">
+          <span style="font-size: 0.75rem; color: var(--text-muted);">You can pay the full pending balance or an installment.</span>
+        </div>
+
+        <label class="form-label" style="margin-top: 1rem;">Select Payment Channel</label>
+        <div class="payment-method-selector">
+          <div class="payment-option-card selected" onclick="portalApp.selectPaymentMethod('upi', this)">
+            <div class="payment-option-icon">📱</div>
+            <div class="payment-option-title">UPI / QR</div>
+            <span style="font-size: 0.7rem; color: var(--text-muted);">GPay, PhonePe, Paytm</span>
+          </div>
+
+          <div class="payment-option-card" onclick="portalApp.selectPaymentMethod('card', this)">
+            <div class="payment-option-icon">💳</div>
+            <div class="payment-option-title">Debit / Credit</div>
+            <span style="font-size: 0.7rem; color: var(--text-muted);">Visa, MasterCard, RuPay</span>
+          </div>
+
+          <div class="payment-option-card" onclick="portalApp.selectPaymentMethod('net', this)">
+            <div class="payment-option-icon">🏦</div>
+            <div class="payment-option-title">Net Banking</div>
+            <span style="font-size: 0.7rem; color: var(--text-muted);">SBI, HDFC, ICICI</span>
+          </div>
+        </div>
+
+        <!-- UPI Form Fields -->
+        <div id="upiFields">
+          <div class="form-group">
+            <label class="form-label">Virtual Payment Address (VPA / UPI ID)</label>
+            <input type="text" class="form-control" value="aarav.sundaram@oksbi" placeholder="yourname@upi">
+          </div>
+          <div style="background: var(--bg-body); border: 1px dashed var(--border-color); border-radius: var(--radius-sm); padding: 0.85rem; text-align: center; font-size: 0.8rem; color: var(--text-secondary);">
+            📲 Scan & Pay instant simulated QR is ready. Verification takes ~1.2s.
+          </div>
+        </div>
+
+        <!-- Card Form Fields -->
+        <div id="cardFields" style="display: none;">
+          <div class="form-group">
+            <label class="form-label">Cardholder Name</label>
+            <input type="text" class="form-control" value="Aarav Sundaram">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Card Number</label>
+            <input type="text" class="form-control" value="4532 •••• •••• 9841">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label">Expiry (MM/YY)</label>
+              <input type="text" class="form-control" value="08/29">
+            </div>
+            <div class="form-group">
+              <label class="form-label">CVV</label>
+              <input type="password" class="form-control" value="•••">
+            </div>
+          </div>
+        </div>
+
+        <!-- Net Banking Fields -->
+        <div id="netBankingFields" style="display: none;">
+          <div class="form-group">
+            <label class="form-label">Select Bank</label>
+            <select class="form-control">
+              <option>State Bank of India (SBI)</option>
+              <option>HDFC Bank</option>
+              <option>ICICI Bank</option>
+              <option>Axis Bank</option>
+              <option>Indian Overseas Bank (IOB)</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="processPayBtn" class="btn btn-primary w-100" style="padding: 0.85rem; margin-top: 1.5rem;" onclick="portalApp.processPayment()">
+          🔒 Authorize & Complete Payment
+        </button>
+
+        <p style="font-size: 0.725rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem;">
+          Simulated Prototype Payment. Generates official downloadable PDF/print receipt with zero real charges.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       OFFICIAL PAYMENT RECEIPT MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="receiptModal">
+    <div class="modal-dialog" style="max-width: 620px;">
+      <div class="modal-header">
+        <h3>Official Payment Receipt</h3>
+        <button class="modal-close-btn" onclick="portalApp.closeReceiptModal()">✕</button>
+      </div>
+      <div class="modal-body" id="receiptContent">
+        <!-- Rendered dynamically by js/portal.js -->
+      </div>
+      <div style="padding: 1rem 2rem 1.5rem; display: flex; justify-content: flex-end; gap: 0.75rem; border-top: 1px solid var(--border-color);">
+        <button class="btn btn-outline" onclick="portalApp.closeReceiptModal()">Close</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Download PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PRINTABLE EXAMINATION HALL TICKET MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="hallTicketModal">
+    <div class="modal-dialog" style="max-width: 700px;">
+      <div class="modal-header">
+        <h3>University Examination Hall Ticket</h3>
+        <button class="modal-close-btn" onclick="portalApp.closeHallTicketModal()">✕</button>
+      </div>
+      <div class="modal-body" id="hallTicketContent">
+        <!-- Rendered dynamically by js/portal.js -->
+      </div>
+      <div style="padding: 1rem 2rem 1.5rem; display: flex; justify-content: flex-end; gap: 0.75rem; border-top: 1px solid var(--border-color);">
+        <button class="btn btn-outline" onclick="portalApp.closeHallTicketModal()">Close</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print Hall Ticket</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/demo-data.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/portal.js"></script>
+</body>
+</html>

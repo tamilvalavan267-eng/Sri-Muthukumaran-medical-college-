@@ -1,0 +1,950 @@
+/* ==========================================================================
+   Sri Muthukumaran Medical College & Research Institute
+   Management Portal Stylesheet
+   ========================================================================== */
+
+/* Portal App Container */
+.portal-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-body);
+}
+
+/* Sidebar Styles */
+.portal-sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--bg-sidebar);
+  color: var(--bg-sidebar-text);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
+  transition: transform var(--transition-base), width var(--transition-base);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-emblem {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  box-shadow: 0 4px 10px var(--primary-glow);
+  flex-shrink: 0;
+}
+
+.sidebar-brand-text h2 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.sidebar-brand-text span {
+  font-size: 0.7rem;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+/* Active Role Badge in Sidebar */
+.sidebar-role-card {
+  margin: 1.25rem 1.25rem 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-role-info {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.sidebar-role-avatar {
+  font-size: 1.35rem;
+}
+
+.sidebar-role-meta h4 {
+  font-size: 0.85rem;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.sidebar-role-meta span {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.role-switcher-dropdown {
+  position: relative;
+}
+
+/* Sidebar Navigation Items */
+.sidebar-nav {
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-grow: 1;
+}
+
+.nav-section-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 0.75rem 0.35rem;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: #cbd5e1;
+  font-size: 0.885rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-item:hover {
+  background: var(--bg-sidebar-hover);
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.sidebar-item.active {
+  background: var(--bg-sidebar-active);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.sidebar-item-icon {
+  font-size: 1.15rem;
+  width: 22px;
+  text-align: center;
+}
+
+.sidebar-badge {
+  margin-left: auto;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  background: var(--secondary);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.sidebar-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Main Content Area */
+.portal-main {
+  flex-grow: 1;
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left var(--transition-base);
+}
+
+/* Portal Top Bar */
+.portal-topbar {
+  height: var(--topbar-height);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  box-shadow: var(--shadow-xs);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.mobile-sidebar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.topbar-search {
+  position: relative;
+  width: 320px;
+}
+
+.topbar-search input {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 2.4rem;
+  font-size: 0.875rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-body);
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+}
+
+.topbar-search input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+  width: 360px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Quick Role Bar in Topbar */
+.role-quick-selector {
+  display: flex;
+  align-items: center;
+  background: var(--bg-subtle);
+  padding: 0.25rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+}
+
+.role-btn {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.role-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px var(--primary-glow);
+}
+
+.notification-bell-btn {
+  position: relative;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.notification-bell-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.notif-badge-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--danger);
+  border: 2px solid var(--bg-surface);
+}
+
+.topbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.topbar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  border: 2px solid var(--primary);
+}
+
+.topbar-user-info h5 {
+  font-size: 0.875rem;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.topbar-user-info span {
+  font-size: 0.725rem;
+  color: var(--text-muted);
+}
+
+/* Page Body Container */
+.portal-content {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.portal-page-header {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.portal-page-title h2 {
+  font-size: 1.75rem;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.portal-page-title p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Dashboard Summary KPI Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--primary);
+}
+
+.kpi-card.kpi-success::before { background-color: var(--success); }
+.kpi-card.kpi-warning::before { background-color: var(--warning); }
+.kpi-card.kpi-info::before { background-color: var(--info); }
+
+.kpi-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+  font-family: var(--font-heading);
+}
+
+.kpi-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.35rem;
+}
+
+.kpi-trend {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.kpi-trend.positive { color: var(--success); }
+.kpi-trend.warning { color: var(--warning); }
+
+.kpi-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+/* Dashboard Grid 2-Column Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-grid-equal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Attendance Progress Bars */
+.attendance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.attendance-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.attendance-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.attendance-subject-name {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.attendance-pct-tag {
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.progress-bar-bg {
+  height: 8px;
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modern Data Table */
+.data-table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.data-table th {
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.725rem;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-body);
+  vertical-align: middle;
+}
+
+.data-table tr:hover {
+  background: var(--bg-subtle);
+}
+
+/* Teacher Attendance Marking Module */
+.attendance-marker-bar {
+  background: var(--primary-light);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.attendance-marker-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.attendance-toggle-btn {
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.attendance-toggle-btn.btn-present {
+  background: var(--success-light);
+  color: var(--success-dark);
+  border-color: var(--success);
+}
+
+.attendance-toggle-btn.btn-absent {
+  background: var(--danger-light);
+  color: var(--danger-dark);
+  border-color: var(--danger);
+}
+
+/* Fee Summary & Payment Modal Styles */
+.fee-summary-banner {
+  background: linear-gradient(135deg, #0b2545 0%, #133b68 100%);
+  color: #ffffff;
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.fee-stat-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.fee-stat-cell h5 {
+  font-size: 0.775rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.fee-stat-cell span {
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+.payment-method-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 1.25rem 0;
+}
+
+.payment-option-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-body);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.payment-option-card.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.payment-option-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.payment-option-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Official Receipt Card (Printable) */
+.receipt-wrapper {
+  background: #ffffff;
+  color: #0f172a;
+  border: 2px dashed #0F52BA;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: var(--shadow-xl);
+}
+
+.receipt-header {
+  text-align: center;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.receipt-badge {
+  background: #dcfce7;
+  color: #15803d;
+  font-weight: 800;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.receipt-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.receipt-meta-item strong {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.receipt-stamp {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  border: 2px solid #0F52BA;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  color: #0F52BA;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-align: center;
+  transform: rotate(-5deg);
+  opacity: 0.85;
+}
+
+/* Hall Ticket Exam Card (Printable) */
+.hall-ticket-card {
+  background: #ffffff;
+  color: #0f172a;
+  border: 2px solid #0F52BA;
+  border-radius: var(--radius-md);
+  padding: 2rem;
+}
+
+.hall-ticket-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #0F52BA;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.hall-ticket-grid {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.student-photo-box {
+  width: 110px;
+  height: 130px;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* Weekly Timetable Grid */
+.timetable-grid {
+  display: grid;
+  grid-template-columns: 110px repeat(5, 1fr);
+  gap: 0.75rem;
+  overflow-x: auto;
+}
+
+.timetable-header-cell {
+  background: var(--bg-subtle);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+}
+
+.timetable-slot-cell {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  min-height: 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.775rem;
+  transition: all var(--transition-fast);
+}
+
+.timetable-slot-cell:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Live Settings / Theme Engine UI */
+.theme-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.theme-preset-card {
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.theme-preset-card:hover, .theme-preset-card.active {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.theme-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 0 auto 0.5rem;
+}
+
+/* Notification Drawer */
+.notif-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 2rem;
+  width: 360px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: 1000;
+  display: none;
+  overflow: hidden;
+}
+
+.notif-dropdown.show {
+  display: block;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.notif-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.notif-list {
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.notif-item {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.notif-item:hover {
+  background: var(--bg-subtle);
+}
+
+.notif-item.unread {
+  background: var(--primary-light);
+}
+
+/* Toast Alert System */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  pointer-events: auto;
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast-success { border-left: 4px solid var(--success); }
+.toast-info { border-left: 4px solid var(--info); }
+.toast-danger { border-left: 4px solid var(--danger); }
+
+/* Responsive Adjustments for Portal */
+@media (max-width: 1024px) {
+  .portal-sidebar {
+    transform: translateX(-100%);
+  }
+  .portal-sidebar.open {
+    transform: translateX(0);
+  }
+  .portal-main {
+    margin-left: 0;
+  }
+  .mobile-sidebar-toggle {
+    display: block;
+  }
+  .dashboard-grid, .dashboard-grid-equal {
+    grid-template-columns: 1fr;
+  }
+  .fee-summary-banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .portal-topbar {
+    padding: 0 1rem;
+  }
+  .topbar-search {
+    display: none;
+  }
+  .portal-content {
+    padding: 1rem;
+  }
+  .fee-stat-group {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .timetable-grid {
+    grid-template-columns: 80px repeat(5, 160px);
+  }
+  .receipt-wrapper {
+    padding: 1.5rem;
+  }
+  .receipt-meta-grid {
+    grid-template-columns: 1fr;
+  }
+  .payment-method-selector {
+    grid-template-columns: 1fr;
+  }
+}
