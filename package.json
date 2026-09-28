@@ -1,0 +1,18 @@
+{
+  "name": "sri-muthukumaran-medical-college-portal",
+  "version": "1.0.0",
+  "description": "Public Website & Role-Based Management Portal for Sri Muthukumaran Medical College & Research Institute",
+  "scripts": {
+    "build": "echo 'Build complete'",
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "medical-college",
+    "management-portal",
+    "college-erp",
+    "smmcri"
+  ],
+  "author": "Google Deepmind Antigravity",
+  "license": "ISC"
+}
